@@ -3,11 +3,11 @@ const notesCtrl = {};
 // Models
 const Producto = require("../models/Producto");
 
-notesCtrl.renderNoteForm = (req, res) => {
+productosCtrl.renderNoteForm = (req, res) => {
   res.render("productos/new-producto");
 };
 
-notesCtrl.createNewProducto = async (req, res) => {
+productosCtrl.createNewProducto = async (req, res) => {
   const { title, description } = req.body;
   const errors = [];
   if (!title) {
@@ -47,14 +47,14 @@ productosCtrl.renderEditForm = async (req, res) => {
   res.render("notes/edit-producto", { producto });
 };
 
-notesCtrl.updateProducto = async (req, res) => {
+productosCtrl.updateProducto = async (req, res) => {
   const { title, description } = req.body;
   await Producto.findByIdAndUpdate(req.params.id, { title, description });
   req.flash("success_msg", "Producto actualizado satisfactoriamente");
   res.redirect("/productos");
 };
 
-notesCtrl.deleteProducto = async (req, res) => {
+productosCtrl.deleteProducto = async (req, res) => {
   await Producto.findByIdAndDelete(req.params.id);
   req.flash("success_msg", "Producto eliminado satisfactoriamente);
   res.redirect("/productos");
