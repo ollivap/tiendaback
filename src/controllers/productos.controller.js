@@ -1,7 +1,7 @@
 const notesCtrl = {};
 
 // Models
-const Note = require("../models/Producto");
+const Producto = require("../models/Producto");
 
 notesCtrl.renderNoteForm = (req, res) => {
   res.render("productos/new-producto");
